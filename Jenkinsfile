@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'windows' }
+    agent { label 'windows-agent' }
 
     environment {
         DEPLOY_DIR = "C:\\inetpub\\wwwroot\\headphone"
@@ -19,7 +19,7 @@ pipeline {
                 if not exist "%DEPLOY_DIR%" (
                     mkdir "%DEPLOY_DIR%"
                 )
-                xcopy /Y /E "%WORKSPACE%\\*" "%DEPLOY_DIR%\\"
+                xcopy /Y /E /I "%WORKSPACE%\\*" "%DEPLOY_DIR%\\"
                 '''
             }
         }
